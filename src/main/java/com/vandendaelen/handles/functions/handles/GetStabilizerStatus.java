@@ -5,7 +5,8 @@ import com.vandendaelen.handles.helpers.FunctionHelper;
 import dan200.computercraft.api.lua.IArguments;
 import dan200.computercraft.api.lua.LuaException;
 import dan200.computercraft.api.lua.MethodResult;
-import net.tardis.mod.subsystem.StabilizerSubsystem;
+import net.tardis.mod.enums.EnumSubsystemType;
+import net.tardis.mod.subsystem.IStabilizerSubsystem;
 import net.tardis.mod.tileentities.ConsoleTile;
 
 public class GetStabilizerStatus implements IFunction {
@@ -17,8 +18,8 @@ public class GetStabilizerStatus implements IFunction {
     @Override
     public MethodResult run(ConsoleTile tardis, IArguments args) throws LuaException {
         try {
-            final StabilizerSubsystem stabilizerSubsystem = FunctionHelper.getTardisSubsystem(tardis, StabilizerSubsystem.class);
-            return MethodResult.of(stabilizerSubsystem.isControlActivated());
+            final IStabilizerSubsystem stabilizerSubsystem = (IStabilizerSubsystem) FunctionHelper.getTardisSubsystem(tardis, EnumSubsystemType.STABILIZER);
+            return MethodResult.of(stabilizerSubsystem.isControlActivated(tardis));
         } catch (IllegalArgumentException e) {
             throw new LuaException(e.getMessage());
         }

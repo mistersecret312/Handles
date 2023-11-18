@@ -4,7 +4,7 @@ import com.vandendaelen.handles.Handles;
 import com.vandendaelen.handles.blocks.tiles.TardisInterfaceTile;
 import com.vandendaelen.handles.misc.TardisInterfacePeripheral;
 import net.minecraft.util.math.BlockPos;
-import net.tardis.mod.subsystem.Subsystem;
+import net.tardis.mod.enums.EnumSubsystemType;
 import net.tardis.mod.tileentities.ConsoleTile;
 import net.tardis.mod.upgrades.Upgrade;
 import net.tardis.mod.upgrades.UpgradeEntry;
@@ -18,8 +18,8 @@ import static dan200.computercraft.shared.Capabilities.CAPABILITY_PERIPHERAL;
  * <br> We no longer use subsystems because currently the Tardis Engine Container will not accept custom subsystems*/
 public class AprioritronUpgrade extends Upgrade {
 	Set<TardisInterfaceTile> activeInterfaces = new LinkedHashSet<>();
-	protected AprioritronUpgrade(UpgradeEntry entry, ConsoleTile tile, Class<? extends Subsystem> clazz) {
-		super(entry, tile, clazz);
+	protected AprioritronUpgrade(UpgradeEntry entry, ConsoleTile tile, EnumSubsystemType type) {
+		super(entry, tile, type);
 	}
 
 	@Override

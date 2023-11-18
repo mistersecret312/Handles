@@ -6,7 +6,8 @@ import dan200.computercraft.api.lua.IArguments;
 import dan200.computercraft.api.lua.LuaException;
 import dan200.computercraft.api.lua.MethodResult;
 import net.minecraft.util.concurrent.TickDelayedTask;
-import net.tardis.mod.subsystem.StabilizerSubsystem;
+import net.tardis.mod.enums.EnumSubsystemType;
+import net.tardis.mod.subsystem.IStabilizerSubsystem;
 import net.tardis.mod.tileentities.ConsoleTile;
 
 public class SetStabilizerStatus implements IFunction {
@@ -20,8 +21,8 @@ public class SetStabilizerStatus implements IFunction {
         boolean stabilizerStatus = args.getBoolean(0);
 
         try {
-            final StabilizerSubsystem stabilizerSubsystem = FunctionHelper.getTardisSubsystem(tardis, StabilizerSubsystem.class);
-            tardis.getLevel().getServer().tell(new TickDelayedTask(1,() -> stabilizerSubsystem.setControlActivated(stabilizerStatus)));
+            final IStabilizerSubsystem stabilizerSubsystem = (IStabilizerSubsystem) FunctionHelper.getTardisSubsystem(tardis, EnumSubsystemType.STABILIZER);
+            tardis.getLevel().getServer().tell(new TickDelayedTask(1,() -> stabilizerSubsystem.setControlActivated(stabilizerStatus, tardis)));
 
             return MethodResult.of(stabilizerStatus);
         } catch (IllegalArgumentException e) {

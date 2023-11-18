@@ -118,8 +118,7 @@ repositories {
 
 dependencies {
     minecraft "net.minecraftforge:forge:${forge_version}"
-    implementation fg.deobf("com.gitlab.Spectre0987:TardisMod:${tm_tag}")
-    //implementation fg.deobf("com.gitlab.Spectre0987:TardisMod-1-14:1.16-SNAPSHOT")
+    implementation 'com.gitlab.mistersecret312:TardisMod:1.5.5-beta'
 
     compileOnly fg.deobf("mezz.jei:jei-${jei_version}:api")
     runtimeOnly fg.deobf("mezz.jei:jei-${jei_version}")
